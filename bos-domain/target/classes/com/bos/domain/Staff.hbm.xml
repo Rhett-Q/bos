@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-10 11:27:41 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.bos.domain.Staff" table="staff" catalog="bos">
+        <id name="id" type="string">
+            <column name="id" length="32" />
+            <generator class="uuid" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="20" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="telephone" length="20" />
+        </property>
+        <property name="haspda" type="java.lang.Character">
+            <column name="haspda" length="1" />
+        </property>
+        <property name="deltag" type="java.lang.Character">
+            <column name="deltag" length="1" />
+        </property>
+        <property name="station" type="string">
+            <column name="station" length="40" />
+        </property>
+        <property name="standard" type="string">
+            <column name="standard" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-10 11:27:41 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.bos.domain.Decidedzone" table="decidedzone" catalog="bos">
+        <id name="id" type="string">
+            <column name="id" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="30" />
+        </property>
+        <property name="staffId" type="string">
+            <column name="staff_id" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>
