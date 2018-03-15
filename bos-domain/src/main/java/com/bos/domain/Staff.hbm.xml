@@ -14,10 +14,10 @@
         <property name="telephone" type="string">
             <column name="telephone" length="20" />
         </property>
-        <property name="haspda" type="java.lang.Character">
+        <property name="haspda" type="string">
             <column name="haspda" length="1" />
         </property>
-        <property name="deltag" type="java.lang.Character">
+        <property name="deltag" type="string">
             <column name="deltag" length="1" />
         </property>
         <property name="station" type="string">
@@ -27,4 +27,9 @@
             <column name="standard" length="100" />
         </property>
     </class>
+    
+    <query name="staff.delete">
+    	update Staff set deltag = '1' where id = ?
+    </query>
+    
 </hibernate-mapping>

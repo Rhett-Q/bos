@@ -10,8 +10,12 @@ import javax.annotation.Resource;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import com.bos.dao.base.BaseDao;
+import com.bos.utils.PageBean;
 
 /*
  * 持久层通用实现
@@ -48,8 +52,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
 	@Override
 	public T findById(Serializable id) {
-		this.getHibernateTemplate().get(entityClass, id);
-		return null;
+		return this.getHibernateTemplate().get(entityClass, id);
 	}
 
 	@Override
@@ -67,6 +70,29 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 			query.setParameter(i++, obj);
 		}
 		query.executeUpdate();
+	}
+
+	@Override
+	public void pageQuery(PageBean pageBean) {
+		// TODO Auto-generated method stub
+		int currentPage = pageBean.getCurrentPage();
+		int pageSize = pageBean.getPageSize();
+		DetachedCriteria criteria = pageBean.getDetachedCriteria();
+		criteria.setProjection(Projections.rowCount());
+		List<Long> list = (List<Long>) this.getHibernateTemplate().findByCriteria(criteria);
+		Long count = list.get(0);
+		pageBean.setTotal(count.intValue());
+		criteria.setProjection(null);
+		int limit = pageSize;
+		int begin = (currentPage - 1) * pageSize;
+		List rows = this.getHibernateTemplate().findByCriteria(criteria, begin, limit);
+		pageBean.setRows(rows);
+	}
+
+	@Override
+	public void saveOrUpdate(T entity) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().saveOrUpdate(entity);
 	}
 	
 }

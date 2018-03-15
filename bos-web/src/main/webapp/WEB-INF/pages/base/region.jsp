@@ -26,6 +26,9 @@
 <script
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
+<script
+	src="${pageContext.request.contextPath }/js/jquery.ocupload-1.1.2.js"
+	type="text/javascript"></script>
 <script type="text/javascript">
 	function doAdd(){
 		$('#addRegionWindow').window("open");
@@ -110,7 +113,7 @@
 			pageList: [30,50,100],
 			pagination : true,
 			toolbar : toolbar,
-			url : "json/region.json",
+			url : "regionAction_pageQuery.action",
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow
@@ -126,6 +129,12 @@
 	        height: 400,
 	        resizable:false
 	    });
+		
+		//增加导入表格窗口
+		$("#button-import").upload({
+			action: 'regionAction_importExcel.action',
+			name: 'regionFile'
+		});
 		
 	});
 

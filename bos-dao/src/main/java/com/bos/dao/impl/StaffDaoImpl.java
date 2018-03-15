@@ -10,5 +10,5 @@ import com.bos.dao.base.impl.BaseDaoImpl;
 import com.bos.domain.Staff;
 @Repository
 public class StaffDaoImpl extends BaseDaoImpl<Staff> implements StaffDao {
-
+	
 }

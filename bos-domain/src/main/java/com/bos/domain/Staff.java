@@ -16,92 +16,53 @@ public class Staff implements java.io.Serializable {
 	private String id;
 	private String name;
 	private String telephone;
-	private Character haspda;
-	private Character deltag;
+	private String haspda = "0";
+	private String deltag = "0";
 	private String station;
 	private String standard;
-
-	public Staff() {
-	}
-
-	public Staff(String id) {
-		this.id = id;
-	}
-
-	public Staff(String id, String name, String telephone, Character haspda, Character deltag, String station,
-			String standard) {
-		this.id = id;
-		this.name = name;
-		this.telephone = telephone;
-		this.haspda = haspda;
-		this.deltag = deltag;
-		this.station = station;
-		this.standard = standard;
-	}
-
-	@Id
-
-	@Column(name = "id", unique = true, nullable = false, length = 32)
 	public String getId() {
-		return this.id;
+		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	@Column(name = "name", length = 20)
 	public String getName() {
-		return this.name;
+		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@Column(name = "telephone", length = 20)
 	public String getTelephone() {
-		return this.telephone;
+		return telephone;
 	}
-
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-
-	@Column(name = "haspda", length = 1)
-	public Character getHaspda() {
-		return this.haspda;
+	public String getHaspda() {
+		return haspda;
 	}
-
-	public void setHaspda(Character haspda) {
+	public void setHaspda(String haspda) {
 		this.haspda = haspda;
 	}
-
-	@Column(name = "deltag", length = 1)
-	public Character getDeltag() {
-		return this.deltag;
+	public String getDeltag() {
+		return deltag;
 	}
-
-	public void setDeltag(Character deltag) {
+	public void setDeltag(String deltag) {
 		this.deltag = deltag;
 	}
-
-	@Column(name = "station", length = 40)
 	public String getStation() {
-		return this.station;
+		return station;
 	}
-
 	public void setStation(String station) {
 		this.station = station;
 	}
-
-	@Column(name = "standard", length = 100)
 	public String getStandard() {
-		return this.standard;
+		return standard;
 	}
-
 	public void setStandard(String standard) {
 		this.standard = standard;
 	}
 
+	
+	
 }
