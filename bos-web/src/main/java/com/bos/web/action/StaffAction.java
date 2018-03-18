@@ -1,6 +1,7 @@
 package com.bos.web.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
@@ -43,7 +44,7 @@ public class StaffAction extends BaseAction<Staff> {
 	
 	public String pageQuery() throws IOException {
 		staffService.pageQuery(pageBean);
-		objectToJson(pageBean, new String[]{"currentPage", "datachedCriteria", "pageSize"});
+		objectToJson(pageBean, new String[]{"currentPage", "detachedCriteria", "pageSize"});
 		return NONE;
 	}
 	
@@ -63,6 +64,12 @@ public class StaffAction extends BaseAction<Staff> {
 		staff.setTelephone(model.getTelephone());
 		staffService.update(staff);
 		return "list";
+	}
+	
+	public String ajaxList() throws IOException {
+		List<Staff> list = staffService.findNotDelete();
+		objectToJson(list, new String[]{"decidedzone"});
+		return NONE;
 	}
 	
 }

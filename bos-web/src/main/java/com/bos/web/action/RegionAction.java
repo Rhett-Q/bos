@@ -14,6 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Row;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.bos.domain.Region;
@@ -21,11 +22,18 @@ import com.bos.service.RegionService;
 import com.bos.utils.PinYin4jUtils;
 import com.bos.web.action.base.BaseAction;
 @Controller
+@Scope("prototype")
 public class RegionAction extends BaseAction<Region> {
 	
 	private File regionFile;
 	@Autowired
 	private RegionService regionService;
+	
+	private String q;
+	
+	public void setQ(String q) {
+		this.q = q;
+	}
 	
 	public void setRegionFile(File regionFile) {
 		this.regionFile = regionFile;
@@ -47,7 +55,6 @@ public class RegionAction extends BaseAction<Region> {
 			String postcode = row.getCell(4).getStringCellValue();
 			Region region = new Region(id, province, city, district, postcode, null, null);
 			
-			
 			province = province.substring(0, province.length()-1);
 			city = city.substring(0, city.length()-1);
 			district = district.substring(0, district.length()-1);
@@ -65,8 +72,18 @@ public class RegionAction extends BaseAction<Region> {
  	
 	public String pageQuery() throws IOException {
 		regionService.pageQuery(pageBean);
-		objectToJson(pageBean, new String[]{"currentPage", "datachedCriteria", "pageSize"});
+		objectToJson(pageBean, new String[]{"currentPage", "detachedCriteria", "pageSize"});
 		return NONE;
 	}
  	
+	public String ajaxList() throws IOException {
+		List list = null;
+		if (StringUtils.isNotBlank(q)) {
+			list = regionService.findAllByQ(q);
+		} else {
+			list = regionService.findAll();
+		}		
+		objectToJson(list, new String[]{});
+		return NONE;
+	}
 }

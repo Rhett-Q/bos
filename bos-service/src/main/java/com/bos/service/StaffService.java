@@ -1,5 +1,7 @@
 package com.bos.service;
 
+import java.util.List;
+
 import com.bos.domain.Staff;
 import com.bos.utils.PageBean;
 
@@ -14,5 +16,7 @@ public interface StaffService {
 	public Staff findById(String id);
 
 	public void update(Staff staff);
+
+	public List<Staff> findNotDelete();
 
 }

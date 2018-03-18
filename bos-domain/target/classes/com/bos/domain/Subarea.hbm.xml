@@ -6,14 +6,17 @@
     <class name="com.bos.domain.Subarea" table="subarea" catalog="bos">
         <id name="id" type="string">
             <column name="id" length="32" />
-            <generator class="assigned" />
+            <generator class="uuid" />
         </id>
-        <property name="decidedzoneId" type="string">
-            <column name="decidedzone_id" length="32" />
-        </property>
-        <property name="regionId" type="string">
-            <column name="region_id" length="32" />
-        </property>
+        
+        <many-to-one name="decidedzone" class="com.bos.domain.Decidedzone" fetch="select">
+        	<column name="decidedzone_id" length="32"></column>
+        </many-to-one>
+        
+        <many-to-one name="region" lazy="false" class="com.bos.domain.Region" fetch="select">
+        	<column name="region_id" length="32"></column>
+        </many-to-one>
+        
         <property name="addresskey" type="string">
             <column name="addresskey" length="100" />
         </property>

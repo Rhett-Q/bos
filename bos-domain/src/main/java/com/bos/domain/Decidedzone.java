@@ -15,48 +15,25 @@ public class Decidedzone implements java.io.Serializable {
 
 	private String id;
 	private String name;
-	private String staffId;
-
-	public Decidedzone() {
-	}
-
-	public Decidedzone(String id) {
-		this.id = id;
-	}
-
-	public Decidedzone(String id, String name, String staffId) {
-		this.id = id;
-		this.name = name;
-		this.staffId = staffId;
-	}
-
-	@Id
-
-	@Column(name = "id", unique = true, nullable = false, length = 32)
+	private Staff staff;
 	public String getId() {
-		return this.id;
+		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	@Column(name = "name", length = 30)
 	public String getName() {
-		return this.name;
+		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@Column(name = "staff_id", length = 32)
-	public String getStaffId() {
-		return this.staffId;
+	public Staff getStaff() {
+		return staff;
+	}
+	public void setStaff(Staff staff) {
+		this.staff = staff;
 	}
 
-	public void setStaffId(String staffId) {
-		this.staffId = staffId;
-	}
-
+	
 }

@@ -30,5 +30,17 @@ public class RegionServiceImpl implements RegionService {
 		// TODO Auto-generated method stub
 		regionDao.pageQuery(pageBean);
 	}
+
+	@Override
+	public List findAll() {
+		// TODO Auto-generated method stub
+		return regionDao.findAll();
+	}
+
+	@Override
+	public List findAllByQ(String q) {
+		// TODO Auto-generated method stub
+		return regionDao.findAllByQ(q);
+	}
 	
 }

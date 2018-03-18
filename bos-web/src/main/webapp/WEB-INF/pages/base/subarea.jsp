@@ -44,7 +44,7 @@
 	}
 	
 	function doExport(){
-		alert("导出");
+		window.location.href = "subareaAction_exportExcel.action";
 	}
 	
 	function doImport(){
@@ -160,7 +160,7 @@
 			pageList: [30,50,100],
 			pagination : true,
 			toolbar : toolbar,
-			url : "json/subarea.json",
+			url : "subareaAction_pageQuery.action",
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow
@@ -188,7 +188,17 @@
 	        resizable:false
 	    });
 		$("#btn").click(function(){
-			alert("执行查询...");
+			var formData = $("#searchForm").serializeJson();
+			console.info(formData);
+			$("#grid").datagrid("load", formData);
+			$("#searchWindow").window("close");
+			
+		});
+		$("#save").click(function(){
+			var flag = $("#addSubareaForm").form('validate');
+			if (flag) {
+				$("#addSubareaForm").submit();
+			}
 		});
 		
 	});
@@ -196,6 +206,25 @@
 	function doDblClickRow(){
 		alert("双击表格数据...");
 	}
+	
+	$.fn.serializeJson=function() {
+		var serializeObj = {};
+		var array = this.serializeArray();
+		$(array).each(function() {
+			if (serializeObj[this.name]) {
+				if ($.isArray(serializeObj[this.name])) {
+					serializeObj[this.name].push(this.value);
+				} else {
+					serialzeObj[this.name] = [serializeObj[this.name], this.value];
+				}
+			} else {
+				serializeObj[this.name] = this.value;
+			}
+		});
+		return serializeObj;
+	};
+	
+	
 </script>	
 </head>
 <body class="easyui-layout" style="visibility:hidden;">
@@ -211,20 +240,20 @@
 		</div>
 		
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="addSubareaForm" action="subareaAction_add.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">分区信息</td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td>分拣编码</td>
 						<td><input type="text" name="id" class="easyui-validatebox" required="true"/></td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td>选择区域</td>
 						<td>
 							<input class="easyui-combobox" name="region.id"  
-    							data-options="valueField:'id',textField:'name',url:'json/standard.json'" />  
+    							data-options="valueField:'id',textField:'name', mode:'remote',url:'regionAction_ajaxList.action'" />  
 						</td>
 					</tr>
 					<tr>
@@ -260,7 +289,7 @@
 	<!-- 查询分区 -->
 	<div class="easyui-window" title="查询分区窗口" id="searchWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="searchForm">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">查询条件</td>

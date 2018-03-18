@@ -14,105 +14,67 @@ import javax.persistence.Table;
 public class Subarea implements java.io.Serializable {
 
 	private String id;
-	private String decidedzoneId;
-	private String regionId;
+	private Decidedzone decidedzone;
+	private Region region;
 	private String addresskey;
 	private String startnum;
 	private String endnum;
 	private Character single;
 	private String position;
-
-	public Subarea() {
+	
+	public String getSubareaid() {
+		return id;
 	}
-
-	public Subarea(String id) {
-		this.id = id;
-	}
-
-	public Subarea(String id, String decidedzoneId, String regionId, String addresskey, String startnum, String endnum,
-			Character single, String position) {
-		this.id = id;
-		this.decidedzoneId = decidedzoneId;
-		this.regionId = regionId;
-		this.addresskey = addresskey;
-		this.startnum = startnum;
-		this.endnum = endnum;
-		this.single = single;
-		this.position = position;
-	}
-
-	@Id
-
-	@Column(name = "id", unique = true, nullable = false, length = 32)
+	
 	public String getId() {
-		return this.id;
+		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	@Column(name = "decidedzone_id", length = 32)
-	public String getDecidedzoneId() {
-		return this.decidedzoneId;
+	
+	public Decidedzone getDecidedzone() {
+		return decidedzone;
 	}
-
-	public void setDecidedzoneId(String decidedzoneId) {
-		this.decidedzoneId = decidedzoneId;
+	public void setDecidedzone(Decidedzone decidedzone) {
+		this.decidedzone = decidedzone;
 	}
-
-	@Column(name = "region_id", length = 32)
-	public String getRegionId() {
-		return this.regionId;
+	public Region getRegion() {
+		return region;
 	}
-
-	public void setRegionId(String regionId) {
-		this.regionId = regionId;
+	public void setRegion(Region region) {
+		this.region = region;
 	}
-
-	@Column(name = "addresskey", length = 100)
 	public String getAddresskey() {
-		return this.addresskey;
+		return addresskey;
 	}
-
 	public void setAddresskey(String addresskey) {
 		this.addresskey = addresskey;
 	}
-
-	@Column(name = "startnum", length = 30)
 	public String getStartnum() {
-		return this.startnum;
+		return startnum;
 	}
-
 	public void setStartnum(String startnum) {
 		this.startnum = startnum;
 	}
-
-	@Column(name = "endnum", length = 30)
 	public String getEndnum() {
-		return this.endnum;
+		return endnum;
 	}
-
 	public void setEndnum(String endnum) {
 		this.endnum = endnum;
 	}
-
-	@Column(name = "single", length = 1)
 	public Character getSingle() {
-		return this.single;
+		return single;
 	}
-
 	public void setSingle(Character single) {
 		this.single = single;
 	}
-
-	@Column(name = "position")
 	public String getPosition() {
-		return this.position;
+		return position;
 	}
-
 	public void setPosition(String position) {
 		this.position = position;
 	}
 
+	
 }

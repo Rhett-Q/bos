@@ -8,7 +8,7 @@
 	
 	<package name="basicstruts2" extends="struts-default">
 		
-		<interceptors>
+		<!-- <interceptors>
 			<interceptor name="loginInterceptor" class="com.bos.web.interceptor.LoginInterceptor">
 				<param name="excludeMethods">login</param>
 			</interceptor>
@@ -20,7 +20,7 @@
 			
 		</interceptors>
 		
-		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+		<default-interceptor-ref name="myStack"></default-interceptor-ref> -->
 		
 		<global-results>
 			<result name="login">/login.jsp</result>
@@ -41,6 +41,14 @@
 		
 		<action name="regionAction_*" class="regionAction" method="{1}">
 			
+		</action>
+		
+		<action name="subareaAction_*" class="subareaAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/subarea.jsp</result>
+		</action>
+		
+		<action name="decidedzoneAction_*" class="decidedzoneAction" method="{1}">
+			<result name="list">/WEB-INF/pages/base/decidedzone.jsp</result>
 		</action>
 		
 	</package>

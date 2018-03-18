@@ -21,6 +21,10 @@ public class Region implements java.io.Serializable {
 	private String shortcode;
 	private String citycode;
 
+	public String getName() {
+		return province + " " + city + " " + district;
+	}
+	
 	public Region() {
 	}
 
