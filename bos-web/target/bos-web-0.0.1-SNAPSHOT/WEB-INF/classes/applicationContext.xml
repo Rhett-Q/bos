@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 						http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/context
@@ -11,7 +12,9 @@
 						http://www.springframework.org/schema/aop
 						http://www.springframework.org/schema/aop/spring-aop.xsd
 						http://www.springframework.org/schema/tx 
-						http://www.springframework.org/schema/tx/spring-tx.xsd">
+						http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://cxf.apache.org/jaxws 
+						http://cxf.apache.org/schemas/jaxws.xsd">
 	
 	<context:property-placeholder location="classpath:db.properties"/>
 	
@@ -53,5 +56,35 @@
 	
 	<!-- 事务注解 -->
 	<tx:annotation-driven/>
+
+	
+	<jaxws:client id="crmClient" 
+		serviceClass="com.bos.crm.CustomerService"
+		address="http://localhost:8080/crm_server/service/customer"/>
+		
+	<bean id="shiroFilter" name="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="loginUrl" value="/login.jsp"></property>
+		<property name="successUrl" value="/index.jsp"></property>
+		<property name="unauthorizedUrl" value="/unauthorized.jsp"></property>
+		<property name="filterChainDefinitions">
+			<value>
+				/css/**=anon
+				/js/**=anon
+				/images/**=anon
+				/login.jsp*=anon
+				/validatecode.jsp*=anon
+				/userAction_login.action=anon
+				/page_base_staff.action=perms["staff"]
+				/*=authc
+			</value>
+		</property>
+	</bean>	
+	
+	<bean name="bosRealm" class="com.bos.shiro.BOSRealm"></bean>
+	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="bosRealm"></property>
+	</bean>
 	
 </beans>

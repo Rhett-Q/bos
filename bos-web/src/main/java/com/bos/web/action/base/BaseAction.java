@@ -46,7 +46,7 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 	public void objectToJson(Object object, String[] excludes) throws IOException {
 		JsonConfig jsonConfig = new JsonConfig();
 		jsonConfig.setExcludes(excludes);
-		String json = JSONObject.fromObject(pageBean, jsonConfig).toString();
+		String json = JSONObject.fromObject(object, jsonConfig).toString();
 		ServletActionContext.getResponse().setContentType("text/json;charset=utf-8");
 		ServletActionContext.getResponse().getWriter().print(json);
 	}

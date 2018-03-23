@@ -37,6 +37,27 @@
 				$('#noticebillForm').submit();
 			}
 		});
+		
+		$("input[name=telephone]").blur(function() {
+			var telephone = this.value;
+			$.post('noticebillAction_findCustomerByTelephone.action', {"telephone":telephone}, function(data) {
+				if (data != null) {
+					var customerId = data.id;
+					var customerName = data.name;
+					var address = data.address;
+					$("input[name=customerId]").val(customerId);
+					$("input[name=customerName]").val(customerName);
+					$("input[name=delegater]").val(customerName);
+					$("input[name=pickaddress]").val(address);
+				} else {
+					$("input[name=customerId]").val("");
+					$("input[name=customerName]").val("");
+					$("input[name=delegater]").val("");
+					$("input[name=pickaddress]").val("");
+				}
+			});
+		});
+		
 	});
 </script>
 </head>
@@ -51,7 +72,7 @@
 		</div>
 	</div>
 	<div region="center" style="overflow:auto;padding:5px;" border="false">
-		<form id="noticebillForm" action="" method="post">
+		<form id="noticebillForm" action="noticebillAction_add.action" method="post">
 			<table class="table-edit" width="95%" align="center">
 				<tr class="title">
 					<td colspan="4">客户信息</td>

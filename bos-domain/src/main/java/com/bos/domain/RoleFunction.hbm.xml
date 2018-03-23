@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-23 20:57:01 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.bos.domain.RoleFunction" table="role_function" catalog="bos">
+        <composite-id name="id" class="com.bos.domain.RoleFunctionId">
+            <key-property name="roleId" type="string">
+                <column name="role_id" length="32" />
+            </key-property>
+            <key-property name="functionId" type="string">
+                <column name="function_id" length="32" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

@@ -28,11 +28,16 @@ public class SubareaAction extends BaseAction<Subarea> {
 	@Autowired
 	private SubareaService subareaService;
 	
+	private String decidedzoneId;
+	
+	public void setDecidedzoneId(String decidedzoneId) {
+		this.decidedzoneId = decidedzoneId;
+	}
+	
 	public String add() {
 		subareaService.add(model);
 		return "list";
 	}
-	
 	public String pageQuery() throws Exception{
 		DetachedCriteria criteria = pageBean.getDetachedCriteria();
 		String addresskey = model.getAddresskey();
@@ -99,4 +104,9 @@ public class SubareaAction extends BaseAction<Subarea> {
 		return NONE;
 	}
 	
+	public String findListByDecidedzoneId() throws IOException {
+		List<Subarea> list = subareaService.findListByDecidedzoneId(decidedzoneId);
+		objectToJson(list, new String[]{"decidedzone", "subareas"});
+		return NONE;
+	}
 }

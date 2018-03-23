@@ -1,5 +1,5 @@
 package com.bos.domain;
-// Generated 2018-3-10 11:27:41 by Hibernate Tools 3.6.0.Final
+// Generated 2018-3-22 20:02:41 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +32,6 @@ public class Subarea implements java.io.Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
 	public Decidedzone getDecidedzone() {
 		return decidedzone;
 	}

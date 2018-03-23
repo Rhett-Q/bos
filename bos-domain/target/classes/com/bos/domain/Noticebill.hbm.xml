@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-22 20:02:41 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+ <class catalog="bos" name="com.bos.domain.Noticebill" table="noticebill">
+  <id name="id" type="string">
+   <column length="32" name="id"/>
+   <generator class="uuid"/>
+  </id>
+  <many-to-one name="staff" class="com.bos.domain.Staff">
+  	<column name="staff_id"></column>
+  </many-to-one>
+  <property generated="never" lazy="false" name="customerId" type="string">
+   <column length="32" name="customer_id"/>
+  </property>
+  <property generated="never" lazy="false" name="customerName" type="string">
+   <column length="20" name="customer_name"/>
+  </property>
+  <property generated="never" lazy="false" name="delegater" type="string">
+   <column length="20" name="delegater"/>
+  </property>
+  <property generated="never" lazy="false" name="telephone" type="string">
+   <column length="20" name="telephone"/>
+  </property>
+  <property generated="never" lazy="false" name="pickaddress" type="string">
+   <column length="200" name="pickaddress"/>
+  </property>
+  <property generated="never" lazy="false" name="arrivecity" type="string">
+   <column length="20" name="arrivecity"/>
+  </property>
+  <property generated="never" lazy="false" name="product" type="string">
+   <column length="20" name="product"/>
+  </property>
+  <property generated="never" lazy="false" name="pickdate" type="date">
+   <column length="10" name="pickdate"/>
+  </property>
+  <property generated="never" lazy="false" name="num" type="java.lang.Integer">
+   <column name="num"/>
+  </property>
+  <property generated="never" lazy="false" name="weight" type="java.lang.Double">
+   <column name="weight" precision="22" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="volume" type="string">
+   <column length="20" name="volume"/>
+  </property>
+  <property generated="never" lazy="false" name="remark" type="string">
+   <column name="remark"/>
+  </property>
+  <property generated="never" lazy="false" name="ordertype" type="string">
+   <column length="20" name="ordertype"/>
+  </property>
+  
+  <many-to-one name="user" class="com.bos.domain.User">
+  	<column name="user_id"></column>
+  </many-to-one>
+  
+ </class>
+</hibernate-mapping>

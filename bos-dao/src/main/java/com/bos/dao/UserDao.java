@@ -5,4 +5,6 @@ import com.bos.domain.User;
 
 public interface UserDao extends BaseDao<User> {
 	User findUserByUsernameAndPassword(String username, String password);
+
+	User findUserByName(String username);
 }

@@ -56,9 +56,35 @@
 	
 	<!-- 事务注解 -->
 	<tx:annotation-driven/>
+
 	
 	<jaxws:client id="crmClient" 
-		serviceClass="com.crm.CustomerService"
+		serviceClass="com.bos.crm.CustomerService"
 		address="http://localhost:8080/crm_server/service/customer"/>
+		
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="loginUrl" value="/login.jsp"></property>
+		<property name="successUrl" value="/index.jsp"></property>
+		<property name="unauthorizedUrl" value="/unauthorized.jsp"></property>
+		<property name="filterChainDefinitions">
+			<value>
+				/css/**=anon
+				/js/**=anon
+				/images/**=anon
+				/login.jsp*=anon
+				/validatecode.jsp*=anon
+				/userAction_login.action=anon
+				/page_base_staff.action=perms["staff"]
+				/*=authc
+			</value>
+		</property>
+	</bean>	
+	
+	<bean name="bosRealm" class="com.bos.shiro.BOSRealm"></bean>
+	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="bosRealm"></property>
+	</bean>
 	
 </beans>

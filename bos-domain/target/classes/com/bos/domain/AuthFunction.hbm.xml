@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-23 20:57:01 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.bos.domain.AuthFunction" table="auth_function" catalog="bos">
+        <id name="id" type="string">
+            <column name="id" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="code" type="string">
+            <column name="code" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="page" type="string">
+            <column name="page" />
+        </property>
+        <property name="generatemenu" type="string">
+            <column name="generatemenu" />
+        </property>
+        <property name="zindex" type="java.lang.Integer">
+            <column name="zindex" />
+        </property>
+        <property name="pid" type="string">
+            <column name="pid" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,5 +1,5 @@
 package com.bos.domain;
-// Generated 2018-3-10 11:27:41 by Hibernate Tools 3.6.0.Final
+// Generated 2018-3-22 20:02:41 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +16,7 @@ public class Decidedzone implements java.io.Serializable {
 	private String id;
 	private String name;
 	private Staff staff;
+	
 	public String getId() {
 		return id;
 	}

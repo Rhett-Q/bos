@@ -1,5 +1,5 @@
 package com.bos.domain;
-// Generated 2018-3-10 11:06:14 by Hibernate Tools 3.6.0.Final
+// Generated 2018-3-22 20:02:41 by Hibernate Tools 3.6.0.Final
 
 import java.util.Date;
 import javax.persistence.Column;

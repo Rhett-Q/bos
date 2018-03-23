@@ -1,5 +1,5 @@
 package com.bos.domain;
-// Generated 2018-3-10 11:27:41 by Hibernate Tools 3.6.0.Final
+// Generated 2018-3-22 20:02:41 by Hibernate Tools 3.6.0.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,53 +16,92 @@ public class Staff implements java.io.Serializable {
 	private String id;
 	private String name;
 	private String telephone;
-	private String haspda = "0";
-	private String deltag = "0";
+	private Character haspda;
+	private Character deltag;
 	private String station;
 	private String standard;
-	public String getId() {
-		return id;
+
+	public Staff() {
 	}
+
+	public Staff(String id) {
+		this.id = id;
+	}
+
+	public Staff(String id, String name, String telephone, Character haspda, Character deltag, String station,
+			String standard) {
+		this.id = id;
+		this.name = name;
+		this.telephone = telephone;
+		this.haspda = haspda;
+		this.deltag = deltag;
+		this.station = station;
+		this.standard = standard;
+	}
+
+	@Id
+
+	@Column(name = "id", unique = true, nullable = false, length = 32)
+	public String getId() {
+		return this.id;
+	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	@Column(name = "name", length = 20)
 	public String getName() {
-		return name;
+		return this.name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Column(name = "telephone", length = 20)
 	public String getTelephone() {
-		return telephone;
+		return this.telephone;
 	}
+
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	public String getHaspda() {
-		return haspda;
+
+	@Column(name = "haspda", length = 1)
+	public Character getHaspda() {
+		return this.haspda;
 	}
-	public void setHaspda(String haspda) {
+
+	public void setHaspda(Character haspda) {
 		this.haspda = haspda;
 	}
-	public String getDeltag() {
-		return deltag;
+
+	@Column(name = "deltag", length = 1)
+	public Character getDeltag() {
+		return this.deltag;
 	}
-	public void setDeltag(String deltag) {
+
+	public void setDeltag(Character deltag) {
 		this.deltag = deltag;
 	}
+
+	@Column(name = "station", length = 40)
 	public String getStation() {
-		return station;
+		return this.station;
 	}
+
 	public void setStation(String station) {
 		this.station = station;
 	}
+
+	@Column(name = "standard", length = 100)
 	public String getStandard() {
-		return standard;
+		return this.standard;
 	}
+
 	public void setStandard(String standard) {
 		this.standard = standard;
 	}
 
-	
-	
 }

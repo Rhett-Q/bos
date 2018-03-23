@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2018-3-10 11:06:14 by Hibernate Tools 3.6.0.Final -->
+<!-- Generated 2018-3-22 20:02:41 by Hibernate Tools 3.6.0.Final -->
 <hibernate-mapping>
     <class name="com.bos.domain.User" table="user" catalog="bos">
         <id name="id" type="string">
