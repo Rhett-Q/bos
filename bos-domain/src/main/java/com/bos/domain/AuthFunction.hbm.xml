@@ -29,5 +29,26 @@
         <property name="pid" type="string">
             <column name="pid" length="32" />
         </property>
+        
+        <many-to-one name="parentFunction" class="com.bos.domain.AuthFunction">
+        	<column name="pid"></column>
+        </many-to-one>
+        
+        <set name="roles" inverse="true" table="roles_function">
+        	<key>
+        		<column name="function_id"></column>
+        	</key>
+        	<many-to-many entity-name="com.bos.domain.AuthRole">
+        		<column name="role_id"></column>
+        	</many-to-many>
+        </set>
+        
+        <set name="children" inverse="true">
+        	<key>
+        		<column name="pid"></column>
+        	</key>
+        	<one-to-many class="com.bos.domain.AuthFunction"/>
+        </set>
+        
     </class>
 </hibernate-mapping>

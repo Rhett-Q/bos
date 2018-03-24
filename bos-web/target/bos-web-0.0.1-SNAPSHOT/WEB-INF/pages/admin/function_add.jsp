@@ -79,7 +79,7 @@
 					<tr>
 						<td>父功能点</td>
 						<td>
-							<input name="parentFunction.id" class="easyui-combobox" data-options="valueField:'id',textField:'info',url:''"/>
+							<input name="parentFunction.id" class="easyui-combobox" data-options="valueField:'id',textField:'info',url:'authFunctionAction_listajax.action'"/>
 						</td>
 					</tr>
 					<tr>

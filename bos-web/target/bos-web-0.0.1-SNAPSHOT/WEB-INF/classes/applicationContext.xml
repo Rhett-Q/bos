@@ -62,7 +62,7 @@
 		serviceClass="com.bos.crm.CustomerService"
 		address="http://localhost:8080/crm_server/service/customer"/>
 		
-	<bean id="shiroFilter" name="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
 		<property name="loginUrl" value="/login.jsp"></property>
 		<property name="successUrl" value="/index.jsp"></property>
